@@ -1,0 +1,8 @@
+{
+  "name": "testing-library",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:MateusGabi/testing-library.git",
+  "author": "Mateus Gabi Moreira <mateusgabimoreira@gmail.com>",
+  "license": "MIT"
+}
