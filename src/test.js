@@ -1,6 +1,7 @@
-module.exports = function test(name, fn) {
-  console.log("-", name);
+const spacer = require("./utils/spacer");
+const fog = require("./utils/fog");
 
-  this.__testName__ = name;
-  fn.call(this);
+module.exports = function test(name, fn) {
+  console.log(spacer(1), "-", name);
+  fog(fn)(name);
 };
