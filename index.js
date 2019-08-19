@@ -3,30 +3,33 @@ const test = (name, fn) => {
   fn()
 }
 
-const notThrows = func => {
-	try {
-		func()
-	} catch(e) {
-		return false;
-	}
-	return true;
+const notThrow = func => {
+	return !toThrow(func)
 }
 
-const throws = func => {
+const toThrow = (func, error) => {
 	try {
 		func()
 	} catch(e) {
+			if (error instanceof String) {			
+				return e.toString() === `Error: ${errorMessage}`
+			}
+			if (error instanceof Object) {			
+				return e.toString() === e.toString()
+			}
 		return true;
 	}
 	return false;
 }
 
-const assert = (cond, desc) => {
+const assert = (desc, cond) => {
   if (cond) {
     console.log('✔️', desc)
   } else {
-    console.assert(cond, desc)
+    //console.assert(cond, desc)
+//		process.exit(1);
+    throw new Error(`Test case doesn't match!`)
   }
 }
 
-module.exports = { test, it: test, assert, notThrows, throws }
+module.exports = { test, it: assert, assert, notThrow, toThrow }
