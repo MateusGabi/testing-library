@@ -1,4 +1,4 @@
-const { toThrow, notThrows, test, assert, it } = require("../index");
+const { toThrow, test, assert } = require("../index");
 
 test("assert function", () => {
   assert("it should not be null", assert !== null);
@@ -10,15 +10,8 @@ test("assert function", () => {
   assert(
     "it should throw any error",
     toThrow(() => {
-      assert("foo", false);
+      throw new Error();
     })
-  );
-
-  assert(
-    "it should throw default error",
-    toThrow(() => {
-      assert("foo", false);
-    }, "Test case doesn't match!")
   );
 
   const err = new Error("Fooo bar");
@@ -28,6 +21,4 @@ test("assert function", () => {
       throw err;
     }, err)
   );
-
-  assert("asa", false);
 });
