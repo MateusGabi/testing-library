@@ -6,6 +6,11 @@
   "author": "Mateus Gabi Moreira <mateusgabimoreira@gmail.com>",
   "license": "MIT",
   "scripts": {
-  	"test": "cd test && for i in *; do node $i; done && cd .."
+    "test": "cd test && for i in *; do node $i; done && cd ..",
+    "dev": "nodemon --exec 'yarn test' ."
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "nodemon": "^1.19.1"
   }
 }
