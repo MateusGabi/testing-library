@@ -1,11 +1,16 @@
 const spacer = require("./utils/spacer");
 
 function assert(desc, cond) {
+  this.__test_cases__ = this.__test_cases__ + 1;
+
   if (cond) {
     console.log(spacer(2), "✅", spacer(1), desc);
+    this.__test_success__ = this.__test_success__ + 1;
   } else {
     console.error(spacer(2), "💩", spacer(1), desc);
-    throw new Error(`Test case doesn't match!`);
+    this.__test_errors__ = this.__test_errors__ + 1;
+    // TODO: --explodeError
+    // throw new Error(`Test case doesn't match!`);
   }
 }
 
